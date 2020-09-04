@@ -11,7 +11,7 @@ public class FactorialIntFunction implements IntegerFunction {
 	private int maxValue = 0;
 	
 	/**
-	 * Creates a new <code>FacultyFunciton</code> (integer).
+	 * Creates a new <code>FactorialIntFunction</code> (integer).
 	 */
 	public FactorialIntFunction() {
 		numberToFValue = new HashMap<Integer, Integer>();

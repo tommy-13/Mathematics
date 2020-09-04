@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import mathsol.random.variables.BernoulliDiscreteRandomVariable;
+import mathsol.random.variables.BinomialDiscreteRandomVariable;
 import mathsol.random.variables.DiscreteRandomVariable;
 import mathsol.random.variables.PoissonDiscreteRandomVariable;
 import mathsol.random.variables.UniformDiscreteRandomVariable;
@@ -13,21 +15,26 @@ import mathsol.random.variables.UniformDiscreteRandomVariable;
 public class DiscreteRVGenerationTest {
 
 	private static final int NUMBER = 100000;
+	private static final int SEED   = 1;
+	
 	
 	public static void main(String[] args) {
-
-		DiscreteRandomVariable uniformDiscreteRV = new UniformDiscreteRandomVariable(-1, 2);
-		DiscreteRandomVariable poissonDiscreteRV = new PoissonDiscreteRandomVariable(1);
 		
-		// print the result
-		runTest(uniformDiscreteRV);
-		runTest(poissonDiscreteRV);
+		DiscreteRandomVariable[] randomVariables = {
+				new UniformDiscreteRandomVariable(-1, 2),
+				new PoissonDiscreteRandomVariable(1),
+				new BernoulliDiscreteRandomVariable(0.8),
+				new BinomialDiscreteRandomVariable(7, 0.5)
+		};
+		
+		for (DiscreteRandomVariable rv : randomVariables) {
+			runTest(rv);
+		}
 	}
 	
 	
 	public static void runTest(DiscreteRandomVariable rv) {
-		int seed = 1;
-		rv.setSeed(seed);
+		rv.setSeed(SEED);
 
 		
 		NumberFormat formatter = new DecimalFormat("#0.0000");

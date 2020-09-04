@@ -2,6 +2,9 @@ package mathsol.random.variables.test;
 
 import static org.junit.Assert.*;
 
+import mathsol.random.variables.BernoulliDiscreteRandomVariable;
+import mathsol.random.variables.BinomialDiscreteRandomVariable;
+import mathsol.random.variables.DiscreteRandomVariable;
 import mathsol.random.variables.PoissonDiscreteRandomVariable;
 import mathsol.random.variables.UniformDiscreteRandomVariable;
 
@@ -10,13 +13,17 @@ import org.junit.Test;
 
 public class DiscreteRVTest {
 	
-	private UniformDiscreteRandomVariable uniformDiscreteRV;
-	private PoissonDiscreteRandomVariable poissonDiscreteRV;
+	private DiscreteRandomVariable uniformDiscreteRV;
+	private DiscreteRandomVariable poissonDiscreteRV;
+	private DiscreteRandomVariable bernoulliDiscreteRV;
+	private DiscreteRandomVariable binomialDiscreteRV;
 
 	@Before
 	public void setUpRandomVariables() throws Exception {
 		uniformDiscreteRV = new UniformDiscreteRandomVariable(-1, 2);
 		poissonDiscreteRV = new PoissonDiscreteRandomVariable(1);
+		bernoulliDiscreteRV = new BernoulliDiscreteRandomVariable(0.4);
+		binomialDiscreteRV  = new BinomialDiscreteRandomVariable(5, 0.2);
 	}
 	
 
@@ -66,4 +73,52 @@ public class DiscreteRVTest {
 		assertEquals(1, poissonDiscreteRV.getVariance(), 1e-3);
 	}
 
+	
+	@Test
+	public void testBernoulli() {
+		// probabilities
+		assertEquals(0.6, bernoulliDiscreteRV.getProbability(0), 1e-3);
+		assertEquals(0.4, bernoulliDiscreteRV.getProbability(1), 1e-3);
+		assertEquals(0.0, bernoulliDiscreteRV.getProbability(2), 1e-3);
+		assertEquals(0.0, bernoulliDiscreteRV.getProbability(-1), 1e-3);
+		
+		// cumulative probabilities
+		assertEquals(0.0, bernoulliDiscreteRV.getCumulativeProbability(-1), 1e-3);
+		assertEquals(0.6, bernoulliDiscreteRV.getCumulativeProbability(0), 1e-3);
+		assertEquals(1.0, bernoulliDiscreteRV.getCumulativeProbability(1), 1e-3);
+		assertEquals(1.0, bernoulliDiscreteRV.getCumulativeProbability(2), 1e-3);
+
+		// expectation
+		assertEquals(0.4, bernoulliDiscreteRV.getExpectation(), 1e-3);
+		
+		// variance
+		assertEquals(0.24, bernoulliDiscreteRV.getVariance(), 1e-3);
+	}
+	
+	@Test
+	public void testBinomial() {
+		// probabilities
+		assertEquals(0.0, binomialDiscreteRV.getProbability(-1), 1e-3);
+		assertEquals(0.32768, binomialDiscreteRV.getProbability(0), 1e-3);
+		assertEquals(0.4096, binomialDiscreteRV.getProbability(1), 1e-3);
+		assertEquals(0.2048, binomialDiscreteRV.getProbability(2), 1e-3);
+		assertEquals(0.0512, binomialDiscreteRV.getProbability(3), 1e-3);
+		assertEquals(0.0064, binomialDiscreteRV.getProbability(4), 1e-3);
+		assertEquals(0.00032, binomialDiscreteRV.getProbability(5), 1e-3);
+		assertEquals(0.0, binomialDiscreteRV.getProbability(6), 1e-3);
+		
+		// cumulative probabilities
+		assertEquals(0.0, binomialDiscreteRV.getCumulativeProbability(-1), 1e-3);
+		assertEquals(0.32768, binomialDiscreteRV.getCumulativeProbability(0), 1e-3);
+		assertEquals(0.73728, binomialDiscreteRV.getCumulativeProbability(1), 1e-3);
+		assertEquals(0.94208, binomialDiscreteRV.getCumulativeProbability(2), 1e-3);
+		assertEquals(1.0, binomialDiscreteRV.getCumulativeProbability(5), 1e-3);
+		assertEquals(1.0, binomialDiscreteRV.getCumulativeProbability(6), 1e-3);
+
+		// expectation
+		assertEquals(1, binomialDiscreteRV.getExpectation(), 1e-3);
+		
+		// variance
+		assertEquals(0.8, binomialDiscreteRV.getVariance(), 1e-3);
+	}
 }

@@ -2,6 +2,7 @@ package mathsol.functions.basic.test;
 
 import static org.junit.Assert.*;
 
+import mathsol.functions.basic.BinomialIntFunction;
 import mathsol.functions.basic.ConstantFunction;
 import mathsol.functions.basic.DoubleFunction;
 import mathsol.functions.basic.ExponentialFunction;
@@ -24,6 +25,7 @@ public class FunctionTest {
 	private DoubleFunction quadratic;
 	
 	private IntegerFunction factorial;
+	private IntegerFunction binomial;
 
 	
 	
@@ -40,6 +42,7 @@ public class FunctionTest {
 	@Before
 	public void setUpIntegerFunctions() throws Exception {
 		factorial = new FactorialIntFunction();
+		binomial  = new BinomialIntFunction(6);
 	}
 
 	
@@ -75,10 +78,17 @@ public class FunctionTest {
 	
 	@Test
 	public void testInteger() {
-		assertEquals(1, factorial.getYValue(0), 1e-3);
-		assertEquals(1, factorial.getYValue(1), 1e-3);
-		assertEquals(120, factorial.getYValue(5), 1e-3);
-		assertEquals(720, factorial.getYValue(6), 1e-3);
+		assertEquals(1, factorial.getYValue(0));
+		assertEquals(1, factorial.getYValue(1));
+		assertEquals(120, factorial.getYValue(5));
+		assertEquals(720, factorial.getYValue(6));
+
+		assertEquals(0, binomial.getYValue(-1));
+		assertEquals(1, binomial.getYValue(0));
+		assertEquals(6, binomial.getYValue(1));
+		assertEquals(20, binomial.getYValue(3));
+		assertEquals(1, binomial.getYValue(6));
+		assertEquals(0, binomial.getYValue(7));
 	}
 
 
