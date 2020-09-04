@@ -29,7 +29,7 @@ public class HyperbelFunction implements DoubleFunction {
 		if(Math.abs(x-a) < TOL) {
 			return Double.POSITIVE_INFINITY;
 		}
-		if(x == Double.POSITIVE_INFINITY || x == Double.NEGATIVE_INFINITY || x < Double.MIN_VALUE + a) {
+		if(x == Double.POSITIVE_INFINITY || x == Double.NEGATIVE_INFINITY) {
 			return 0;
 		}
 		return 1 / (x - a);
