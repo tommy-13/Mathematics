@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 import mathsol.random.variables.BernoulliDiscreteRandomVariable;
 import mathsol.random.variables.BinomialDiscreteRandomVariable;
 import mathsol.random.variables.DiscreteRandomVariable;
+import mathsol.random.variables.GeometricDiscreteRandomVariable;
+import mathsol.random.variables.NegativeBinomialDiscreteRandomVariable;
 import mathsol.random.variables.PoissonDiscreteRandomVariable;
 import mathsol.random.variables.UniformDiscreteRandomVariable;
 
@@ -24,7 +26,9 @@ public class DiscreteRVGenerationTest {
 				new UniformDiscreteRandomVariable(-1, 2),
 				new PoissonDiscreteRandomVariable(1),
 				new BernoulliDiscreteRandomVariable(0.8),
-				new BinomialDiscreteRandomVariable(7, 0.5)
+				new BinomialDiscreteRandomVariable(7, 0.5),
+				new GeometricDiscreteRandomVariable(0.5),
+				new NegativeBinomialDiscreteRandomVariable(0.8,5)
 		};
 		
 		for (DiscreteRandomVariable rv : randomVariables) {
@@ -33,7 +37,7 @@ public class DiscreteRVGenerationTest {
 	}
 	
 	
-	public static void runTest(DiscreteRandomVariable rv) {
+	private static void runTest(DiscreteRandomVariable rv) {
 		rv.setSeed(SEED);
 
 		

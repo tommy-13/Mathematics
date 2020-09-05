@@ -3,20 +3,23 @@ package mathsol.random.variables.test;
 import static org.junit.Assert.*;
 
 import mathsol.random.variables.ExponentialContinousRandomVariable;
+import mathsol.random.variables.GaussianContinousRandomVariable;
 import mathsol.random.variables.UniformContinousRandomVariable;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ContinousRVTest {
 	
-	private UniformContinousRandomVariable uniformContinousRV;
+	private UniformContinousRandomVariable     uniformContinousRV;
 	private ExponentialContinousRandomVariable exponentialContinousRV;
+	private GaussianContinousRandomVariable    gaussianContinousRV;
 	
 
 	@Before
 	public void setUpRandomVariables() throws Exception {
-		uniformContinousRV = new UniformContinousRandomVariable(-3, 2);
+		uniformContinousRV     = new UniformContinousRandomVariable(-3, 2);
 		exponentialContinousRV = new ExponentialContinousRandomVariable(2);
+		gaussianContinousRV    = new GaussianContinousRandomVariable(1, 2);
 	}
 	
 
@@ -63,5 +66,23 @@ public class ContinousRVTest {
 		// variance
 		assertEquals(0.25, exponentialContinousRV.getVariance(), 1e-3);
 	}
-	
+
+
+	@Test
+	public void testGaussianContinous() {
+		// probabilities
+		assertEquals(1.0 / (Math.sqrt(2*Math.PI*4)), gaussianContinousRV.getProbabilityMass(1), 1e-3);
+		assertEquals(1.0 / (Math.sqrt(2*Math.PI*4)*Math.E*Math.E), gaussianContinousRV.getProbabilityMass(5), 1e-3);
+		
+		// cumulative probabilities
+		assertEquals(0.3085, gaussianContinousRV.getCumulativeProbabilityMass(0), 1e-3);
+		assertEquals(0.5, gaussianContinousRV.getCumulativeProbabilityMass(1), 1e-3);
+		assertEquals(0.6915, gaussianContinousRV.getCumulativeProbabilityMass(2), 1e-3);
+
+		// expectation
+		assertEquals(1, gaussianContinousRV.getExpectation(), 1e-3);
+		
+		// variance
+		assertEquals(4, gaussianContinousRV.getVariance(), 1e-3);
+	}
 }

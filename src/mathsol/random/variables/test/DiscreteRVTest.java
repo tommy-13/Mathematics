@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import mathsol.random.variables.BernoulliDiscreteRandomVariable;
 import mathsol.random.variables.BinomialDiscreteRandomVariable;
 import mathsol.random.variables.DiscreteRandomVariable;
+import mathsol.random.variables.GeometricDiscreteRandomVariable;
+import mathsol.random.variables.NegativeBinomialDiscreteRandomVariable;
 import mathsol.random.variables.PoissonDiscreteRandomVariable;
 import mathsol.random.variables.UniformDiscreteRandomVariable;
 
@@ -17,13 +19,17 @@ public class DiscreteRVTest {
 	private DiscreteRandomVariable poissonDiscreteRV;
 	private DiscreteRandomVariable bernoulliDiscreteRV;
 	private DiscreteRandomVariable binomialDiscreteRV;
+	private DiscreteRandomVariable geometricDiscreteRV;
+	private DiscreteRandomVariable negativeBinomialDiscreteRV;
 
 	@Before
 	public void setUpRandomVariables() throws Exception {
-		uniformDiscreteRV = new UniformDiscreteRandomVariable(-1, 2);
-		poissonDiscreteRV = new PoissonDiscreteRandomVariable(1);
-		bernoulliDiscreteRV = new BernoulliDiscreteRandomVariable(0.4);
-		binomialDiscreteRV  = new BinomialDiscreteRandomVariable(5, 0.2);
+		uniformDiscreteRV          = new UniformDiscreteRandomVariable(-1, 2);
+		poissonDiscreteRV          = new PoissonDiscreteRandomVariable(1);
+		bernoulliDiscreteRV        = new BernoulliDiscreteRandomVariable(0.4);
+		binomialDiscreteRV         = new BinomialDiscreteRandomVariable(5, 0.2);
+		geometricDiscreteRV        = new GeometricDiscreteRandomVariable(0.1);
+		negativeBinomialDiscreteRV = new NegativeBinomialDiscreteRandomVariable(0.2, 10);
 	}
 	
 
@@ -120,5 +126,48 @@ public class DiscreteRVTest {
 		
 		// variance
 		assertEquals(0.8, binomialDiscreteRV.getVariance(), 1e-3);
+	}
+	
+
+	
+	@Test
+	public void testGeometric() {
+		// probabilities
+		assertEquals(0.0, geometricDiscreteRV.getProbability(0), 1e-3);
+		assertEquals(0.1, geometricDiscreteRV.getProbability(1), 1e-3);
+		assertEquals(0.09, geometricDiscreteRV.getProbability(2), 1e-3);
+		assertEquals(0.081, geometricDiscreteRV.getProbability(3), 1e-3);
+		
+		// cumulative probabilities
+		assertEquals(0.0, geometricDiscreteRV.getCumulativeProbability(0), 1e-3);
+		assertEquals(0.1, geometricDiscreteRV.getCumulativeProbability(1), 1e-3);
+		assertEquals(0.19, geometricDiscreteRV.getCumulativeProbability(2), 1e-3);
+		assertEquals(0.271, geometricDiscreteRV.getCumulativeProbability(3), 1e-3);
+
+		// expectation
+		assertEquals(10, geometricDiscreteRV.getExpectation(), 1e-3);
+		
+		// variance
+		assertEquals(90, geometricDiscreteRV.getVariance(), 1e-3);
+	}
+	
+	@Test
+	public void testNegativeBinomial() {
+		// probabilities
+		assertEquals(0.0, negativeBinomialDiscreteRV.getProbability(9), 1e-3);
+		assertEquals(Math.pow(0.2, 10), negativeBinomialDiscreteRV.getProbability(10), 1e-3);
+		assertEquals(0.001016, negativeBinomialDiscreteRV.getProbability(20), 1e-3);
+		assertEquals(0.0118, negativeBinomialDiscreteRV.getProbability(30), 1e-3);
+		
+		// cumulative probabilities
+		assertEquals(0.0, negativeBinomialDiscreteRV.getCumulativeProbability(9), 1e-3);
+		assertEquals(Math.pow(0.2, 10), negativeBinomialDiscreteRV.getCumulativeProbability(10), 1e-3);
+		assertEquals(Math.pow(0.2, 10) + Math.pow(0.2, 11), negativeBinomialDiscreteRV.getCumulativeProbability(11), 1e-3);
+
+		// expectation
+		assertEquals(50, negativeBinomialDiscreteRV.getExpectation(), 1e-3);
+		
+		// variance
+		assertEquals(200, negativeBinomialDiscreteRV.getVariance(), 1e-3);
 	}
 }

@@ -7,6 +7,7 @@ import mathsol.functions.basic.ConstantFunction;
 import mathsol.functions.basic.DoubleFunction;
 import mathsol.functions.basic.ExponentialFunction;
 import mathsol.functions.basic.FactorialIntFunction;
+import mathsol.functions.basic.GaussianDensityFunction;
 import mathsol.functions.basic.HyperbelFunction;
 import mathsol.functions.basic.IdentityFunction;
 import mathsol.functions.basic.IntegerFunction;
@@ -23,6 +24,7 @@ public class FunctionTest {
 	private DoubleFunction identity;
 	private DoubleFunction linear;
 	private DoubleFunction quadratic;
+	private DoubleFunction gaussian;
 	
 	private IntegerFunction factorial;
 	private IntegerFunction binomial;
@@ -37,6 +39,7 @@ public class FunctionTest {
 		identity    = new IdentityFunction();
 		linear      = new LinearFunction(2, -1);
 		quadratic   = new QuadraticFunction(1, 0, -1);
+		gaussian    = new GaussianDensityFunction(1, 2);
 	}
 	
 	@Before
@@ -74,6 +77,9 @@ public class FunctionTest {
 		assertEquals(0, quadratic.getYValue(-1), 1e-3);
 		assertEquals(-1, quadratic.getYValue(0), 1e-3);
 		assertEquals(0, quadratic.getYValue(1), 1e-3);
+
+		assertEquals(1.0 / (Math.sqrt(4.0*Math.PI)), gaussian.getYValue(1), 1e-3);
+		assertEquals(1.0 / (Math.sqrt(4.0*Math.PI) * Math.E), gaussian.getYValue(3), 1e-3);
 	}
 	
 	@Test
