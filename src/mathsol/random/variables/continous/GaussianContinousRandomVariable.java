@@ -1,4 +1,4 @@
-package mathsol.random.variables;
+package mathsol.random.variables.continous;
 
 import mathsol.functions.basic.GaussianDensityFunction;
 import mathsol.functions.integral.IntegralCalculator;

@@ -1,4 +1,4 @@
-package mathsol.random.variables.test;
+package mathsol.random.variables.continous.test;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import mathsol.random.variables.ContinousRandomVariable;
-import mathsol.random.variables.GaussianContinousRandomVariable;
-import mathsol.random.variables.UniformContinousRandomVariable;
+import mathsol.random.variables.continous.ContinousRandomVariable;
+import mathsol.random.variables.continous.GaussianContinousRandomVariable;
+import mathsol.random.variables.continous.UniformContinousRandomVariable;
 
 public class ContinousRVGenerationTest {
 

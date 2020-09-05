@@ -1,12 +1,13 @@
-package mathsol.random.variables.test;
+package mathsol.random.variables.continous.test;
 
 import static org.junit.Assert.*;
 
-import mathsol.random.variables.ExponentialContinousRandomVariable;
-import mathsol.random.variables.GaussianContinousRandomVariable;
-import mathsol.random.variables.UniformContinousRandomVariable;
 import org.junit.Before;
 import org.junit.Test;
+
+import mathsol.random.variables.continous.ExponentialContinousRandomVariable;
+import mathsol.random.variables.continous.GaussianContinousRandomVariable;
+import mathsol.random.variables.continous.UniformContinousRandomVariable;
 
 public class ContinousRVTest {
 	

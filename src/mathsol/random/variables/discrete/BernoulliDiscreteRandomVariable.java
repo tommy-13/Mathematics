@@ -1,4 +1,4 @@
-package mathsol.random.variables;
+package mathsol.random.variables.discrete;
 
 public class BernoulliDiscreteRandomVariable extends DiscreteRandomVariable {
 

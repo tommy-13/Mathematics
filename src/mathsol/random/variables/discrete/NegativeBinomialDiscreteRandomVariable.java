@@ -1,4 +1,4 @@
-package mathsol.random.variables;
+package mathsol.random.variables.discrete;
 
 import mathsol.functions.basic.BinomialIntFunction;
 

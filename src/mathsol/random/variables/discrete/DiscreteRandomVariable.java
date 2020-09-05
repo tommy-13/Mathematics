@@ -1,4 +1,6 @@
-package mathsol.random.variables;
+package mathsol.random.variables.discrete;
+
+import mathsol.random.variables.RandomVariable;
 
 /**
  * Class for a discrete random variable.

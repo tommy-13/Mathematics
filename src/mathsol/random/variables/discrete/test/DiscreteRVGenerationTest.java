@@ -1,4 +1,4 @@
-package mathsol.random.variables.test;
+package mathsol.random.variables.discrete.test;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import mathsol.random.variables.BernoulliDiscreteRandomVariable;
-import mathsol.random.variables.BinomialDiscreteRandomVariable;
-import mathsol.random.variables.DiscreteRandomVariable;
-import mathsol.random.variables.GeometricDiscreteRandomVariable;
-import mathsol.random.variables.NegativeBinomialDiscreteRandomVariable;
-import mathsol.random.variables.PoissonDiscreteRandomVariable;
-import mathsol.random.variables.UniformDiscreteRandomVariable;
+import mathsol.random.variables.discrete.BernoulliDiscreteRandomVariable;
+import mathsol.random.variables.discrete.BinomialDiscreteRandomVariable;
+import mathsol.random.variables.discrete.DiscreteRandomVariable;
+import mathsol.random.variables.discrete.GeometricDiscreteRandomVariable;
+import mathsol.random.variables.discrete.NegativeBinomialDiscreteRandomVariable;
+import mathsol.random.variables.discrete.PoissonDiscreteRandomVariable;
+import mathsol.random.variables.discrete.UniformDiscreteRandomVariable;
 
 public class DiscreteRVGenerationTest {
 

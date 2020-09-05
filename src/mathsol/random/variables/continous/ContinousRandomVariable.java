@@ -1,4 +1,6 @@
-package mathsol.random.variables;
+package mathsol.random.variables.continous;
+
+import mathsol.random.variables.RandomVariable;
 
 /**
  * Class for a continous random variable.

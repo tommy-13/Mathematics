@@ -1,17 +1,17 @@
-package mathsol.random.variables.test;
+package mathsol.random.variables.discrete.test;
 
 import static org.junit.Assert.*;
 
-import mathsol.random.variables.BernoulliDiscreteRandomVariable;
-import mathsol.random.variables.BinomialDiscreteRandomVariable;
-import mathsol.random.variables.DiscreteRandomVariable;
-import mathsol.random.variables.GeometricDiscreteRandomVariable;
-import mathsol.random.variables.NegativeBinomialDiscreteRandomVariable;
-import mathsol.random.variables.PoissonDiscreteRandomVariable;
-import mathsol.random.variables.UniformDiscreteRandomVariable;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import mathsol.random.variables.discrete.BernoulliDiscreteRandomVariable;
+import mathsol.random.variables.discrete.BinomialDiscreteRandomVariable;
+import mathsol.random.variables.discrete.DiscreteRandomVariable;
+import mathsol.random.variables.discrete.GeometricDiscreteRandomVariable;
+import mathsol.random.variables.discrete.NegativeBinomialDiscreteRandomVariable;
+import mathsol.random.variables.discrete.PoissonDiscreteRandomVariable;
+import mathsol.random.variables.discrete.UniformDiscreteRandomVariable;
 
 public class DiscreteRVTest {
 	

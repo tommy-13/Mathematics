@@ -1,4 +1,4 @@
-package mathsol.random.variables;
+package mathsol.random.variables.continous;
 
 public class ExponentialContinousRandomVariable extends ContinousRandomVariable {
 

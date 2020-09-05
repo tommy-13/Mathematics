@@ -1,7 +1,7 @@
 package mathsol.functions.integral;
 
 import mathsol.functions.basic.DoubleFunction;
-import mathsol.random.variables.UniformContinousRandomVariable;
+import mathsol.random.variables.continous.UniformContinousRandomVariable;
 
 /**
  * Implements an <code>IntegralCalculator</code> based on the law of large numbers (probability theory).
