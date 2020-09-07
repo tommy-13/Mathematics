@@ -10,5 +10,5 @@ Usually some abstract class or interface is implemented for the items listed bel
  <li>create numerical integral</li>
  <li>create discrete and continous random variables</li>
  <li>rational numbers</li>
- <li>complex number</li>
+ <li>complex numbers</li>
 </ul>
