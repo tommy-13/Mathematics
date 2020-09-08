@@ -11,7 +11,10 @@ public class PoissonDiscreteRandomVariable extends DiscreteRandomVariable {
 	 * Creates a new poisson distributed random variable with parameter <code>lambda</code>.
 	 * @param lambda
 	 */
-	public PoissonDiscreteRandomVariable(int lambda) {
+	public PoissonDiscreteRandomVariable(double lambda) {
+		if (lambda <= 0) {
+			throw new IllegalArgumentException("Parameter lambda must be larger than 0.");
+		}
 		this.name = "discrete poisson";
 		this.lambda = lambda;
 	}
