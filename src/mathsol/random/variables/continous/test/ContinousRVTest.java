@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import mathsol.random.variables.continous.ExponentialContinousRandomVariable;
 import mathsol.random.variables.continous.GaussianContinousRandomVariable;
+import mathsol.random.variables.continous.TriangleContinousRandomVariable;
 import mathsol.random.variables.continous.UniformContinousRandomVariable;
 
 public class ContinousRVTest {
@@ -14,6 +15,7 @@ public class ContinousRVTest {
 	private UniformContinousRandomVariable     uniformContinousRV;
 	private ExponentialContinousRandomVariable exponentialContinousRV;
 	private GaussianContinousRandomVariable    gaussianContinousRV;
+	private TriangleContinousRandomVariable    triangleContinousRV;
 	
 
 	@Before
@@ -21,6 +23,7 @@ public class ContinousRVTest {
 		uniformContinousRV     = new UniformContinousRandomVariable(-3, 2);
 		exponentialContinousRV = new ExponentialContinousRandomVariable(2);
 		gaussianContinousRV    = new GaussianContinousRandomVariable(1, 2);
+		triangleContinousRV    = new TriangleContinousRandomVariable(-1, 1, 0);
 	}
 	
 
@@ -85,5 +88,29 @@ public class ContinousRVTest {
 		
 		// variance
 		assertEquals(4, gaussianContinousRV.getVariance(), 1e-3);
+	}
+	
+
+	@Test
+	public void testTriangleContinous() {
+		// probabilities
+		assertEquals(0.0, triangleContinousRV.getProbabilityMass(-1.1), 1e-3);
+		assertEquals(0.5, triangleContinousRV.getProbabilityMass(-0.5), 1e-3);
+		assertEquals(1.0, triangleContinousRV.getProbabilityMass(0.0), 1e-3);
+		assertEquals(0.2, triangleContinousRV.getProbabilityMass(0.8), 1e-3);
+		assertEquals(0.0, triangleContinousRV.getProbabilityMass(1.0), 1e-3);
+		
+		// cumulative probabilities
+		assertEquals(0.0, triangleContinousRV.getCumulativeProbabilityMass(-1.1), 1e-3);
+		assertEquals(0.125, triangleContinousRV.getCumulativeProbabilityMass(-0.5), 1e-3);
+		assertEquals(0.5, triangleContinousRV.getCumulativeProbabilityMass(0.0), 1e-3);
+		assertEquals(0.98, triangleContinousRV.getCumulativeProbabilityMass(0.8), 1e-3);
+		assertEquals(1.0, triangleContinousRV.getCumulativeProbabilityMass(1.0), 1e-3);
+
+		// expectation
+		assertEquals(0, triangleContinousRV.getExpectation(), 1e-3);
+		
+		// variance
+		assertEquals(1.0/6.0, triangleContinousRV.getVariance(), 1e-3);
 	}
 }

@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import mathsol.random.variables.continous.ContinousRandomVariable;
 import mathsol.random.variables.continous.GaussianContinousRandomVariable;
+import mathsol.random.variables.continous.TriangleContinousRandomVariable;
 import mathsol.random.variables.continous.UniformContinousRandomVariable;
 
 public class ContinousRVGenerationTest {
@@ -21,7 +22,8 @@ public class ContinousRVGenerationTest {
 		ContinousRandomVariable[] randomVariables = {
 				new UniformContinousRandomVariable(-1, 2),
 				new GaussianContinousRandomVariable(0, 1),
-				new GaussianContinousRandomVariable(1, 2)
+				new GaussianContinousRandomVariable(1, 2),
+				new TriangleContinousRandomVariable(0, 10, 8)
 		};
 		
 		for (ContinousRandomVariable rv : randomVariables) {
