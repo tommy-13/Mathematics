@@ -11,29 +11,17 @@ public class CaesarCipher implements StringCipher {
 	
 	
 	/**
-	 * Creates a Caesar Cipher where the letters are shifted by <code>shift</code> positions.
-	 * @param shift
+	 * Creates a Caesar Cipher where the letters are shifted by <code>key</code> positions.
+	 * @param key
 	 */
-	public CaesarCipher(int shift) {
+	public CaesarCipher(int key) {
 		this.numberLetters = LetterMap.getInstance().getStandandSize();
 		this.modulo        = new ModuloFunction(numberLetters);
 		
-		this.shift     = modulo.getYValue(shift);
-		this.shiftBack = modulo.getYValue(-shift);
+		this.shift     = modulo.getYValue(key);
+		this.shiftBack = modulo.getYValue(-key);
 	}
 	
-	
-	/**
-	 * Returns the shift of this Caesar Cipher.
-	 * @return shift
-	 */
-	public int getShift() {
-		return shift;
-	}
-	
-	public int getShiftBack() {
-		return shiftBack;
-	}
 	
 
 	
