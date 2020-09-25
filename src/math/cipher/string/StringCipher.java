@@ -10,7 +10,7 @@ public interface StringCipher {
 	public String encode(String str);
 	
 	/**
-	 * Decodes the input string.
+	 * Decodes the input string. Make sure the input string is a valid encoding regarding the StringCipher.
 	 * @param str an encoded word consisting of Latin letters.
 	 * @return the decoded word
 	 */

@@ -16,7 +16,6 @@ public class LetterMap {
 	private String[] chars = {
 			"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",	"M",
 			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-
 	
 	private Map<String, Integer> standardStr2Number = new HashMap<String, Integer>();
 	private Map<Integer, String> standardNumber2Str = new HashMap<Integer, String>();
